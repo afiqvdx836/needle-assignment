@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import DogFeed from './components/DogFeed';
 import { auth, db } from './firebase';
 import DogBreeds from './components/DogBreeds';
 import { doc, updateDoc } from "firebase/firestore";
@@ -9,6 +10,7 @@ import { doc, updateDoc } from "firebase/firestore";
 function App() {
 
   const [user, setUser] = useState(null);
+  const [selectedBreeds, setSelectedBreeds] = useState([]);
 
   useEffect(() => {
     // Firebase listener to check if a user is logged in
@@ -18,13 +20,14 @@ function App() {
     return unsubscribe; // Clean up the listener when the component unmounts
   }, []);
 
-  const handleSelectBreed = async (selectedBreeds) => {
+  const handleSelectBreed = async (breeds) => {
+    setSelectedBreeds(breeds);
     if (user) {
       const userDocRef = doc(db, "users", user.uid);
       await updateDoc(userDocRef, {
-        favoriteBreeds: selectedBreeds
+        favoriteBreeds: breeds
       });
-      alert('Favorite breeds saved!');
+      console.log('Favorite breeds saved!');
     }
   };
 
@@ -41,6 +44,7 @@ function App() {
           <h2>Welcome, {user.email}</h2>
           <Logout />
           <DogBreeds onSelectBreed={handleSelectBreed} />
+          {selectedBreeds.length > 0 && <DogFeed selectedBreeds={selectedBreeds} />}
         </>
       )}
     </div>
