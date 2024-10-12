@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { db } from '../firebase';
+import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 
-const DogFeed = ({ selectedBreeds }) => {
-    console.log('eaohjoha')
-    console.log(selectedBreeds)
+const DogFeed = ({ selectedBreeds, user }) => {
   const [dogImages, setDogImages] = useState([]);
 
   useEffect(() => {
@@ -20,6 +20,18 @@ const DogFeed = ({ selectedBreeds }) => {
     }
   }, [selectedBreeds]);
 
+  const handleLike = async (image) => {
+    if (user) {
+      const userDocRef = doc(db, 'users', user.uid);
+      await updateDoc(userDocRef, {
+        likedImages: arrayUnion(image),
+      });
+      alert('You liked this image!');
+    } else {
+      alert('You must be logged in to like images.');
+    }
+  };
+
   return (
     <div>
       <h2>Your Dog Feed</h2>
@@ -27,6 +39,7 @@ const DogFeed = ({ selectedBreeds }) => {
         {dogImages.map((image, index) => (
           <div key={index}>
             <img src={image} alt={`Random dog of ${selectedBreeds[index]}`} width="300px" />
+            <button onClick={() => handleLike(image)}>Like</button>
           </div>
         ))}
       </div>

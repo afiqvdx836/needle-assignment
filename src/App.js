@@ -44,7 +44,7 @@ function App() {
           <h2>Welcome, {user.email}</h2>
           <Logout />
           <DogBreeds onSelectBreed={handleSelectBreed} />
-          {selectedBreeds.length > 0 && <DogFeed selectedBreeds={selectedBreeds} />}
+          {selectedBreeds.length > 0 && <DogFeed selectedBreeds={selectedBreeds} user={user} />}
         </>
       )}
     </div>

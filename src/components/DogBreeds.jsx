@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const DogBreeds = ({ onSelectBreed }) => {
   const [breeds, setBreeds] = useState([]);
