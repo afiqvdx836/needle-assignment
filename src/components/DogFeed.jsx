@@ -26,7 +26,7 @@ const DogFeed = ({ selectedBreeds, user }) => {
       await updateDoc(userDocRef, {
         likedImages: arrayUnion(image),
       });
-      alert('You liked this image!');
+      console.log('You liked this image!');
     } else {
       alert('You must be logged in to like images.');
     }

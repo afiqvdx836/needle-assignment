@@ -28,15 +28,15 @@ const DogBreeds = ({ onSelectBreed }) => {
   };
 
   return (
-    <div>
+    <div className='dogbreeds-wrapper'>
       <h2>Select up to 3 Favorite Breeds</h2>
-      <ul>
+      <div className="dog-grid">
         {breeds.map((breed) => (
-          <li key={breed}>
+          <div key={breed} className="dog-card">
             {breed} <button onClick={() => handleSelectBreed(breed)}>Select</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       <h3>Selected Breeds: {selectedBreeds.join(', ')}</h3>
     </div>
   );
