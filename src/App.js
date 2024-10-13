@@ -6,6 +6,8 @@ import DogFeed from './components/DogFeed';
 import { auth, db } from './firebase';
 import DogBreeds from './components/DogBreeds';
 import { doc, updateDoc } from "firebase/firestore";
+import MainContent from './components/MainContent';
+import Header from './components/Header';
 
 function App() {
 
@@ -33,11 +35,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Helloo</h1>
+      
+      <Header />
       {!user ? (
         <>
-          <Signup />
-          <Login />
+          <MainContent />
+          {/* <Signup />
+          <Login /> */}
         </>
       ) : (
         <>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore"; // Import Firestore functions functions
+import { setDoc, doc } from "firebase/firestore";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const Signup = () => {
   } catch (error) {
     console.error(error);
   }
-};
+  };
 
   return (
     <div>
