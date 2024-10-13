@@ -6636,8 +6636,14 @@ h6 {
   background-color: #0056b3;
 }
 
+.dogcard-wrapper {
+  max-width: 1207px;
+  margin: 0 auto;
+}
+
 .dogcard {
   display: flex;
   flex-direction: column;
   width: fit-content;
 }
+

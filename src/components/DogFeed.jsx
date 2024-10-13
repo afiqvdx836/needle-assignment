@@ -38,7 +38,7 @@ const DogFeed = ({ selectedBreeds, user }) => {
   };
 
   return (
-    <div>
+    <div className='dogcard-wrapper'>
       <h2>Your Dog Feed</h2>
       <Swiper
         spaceBetween={20}
