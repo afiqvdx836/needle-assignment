@@ -6605,7 +6605,7 @@ h6 {
 
 .dog-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(7, 1fr); /* 3 columns */
   gap: 15px;
   padding: 20px;
 }
@@ -6634,4 +6634,10 @@ h6 {
 
 .dog-card button:hover {
   background-color: #0056b3;
+}
+
+.dogcard {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
 }
