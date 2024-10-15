@@ -6639,11 +6639,47 @@ h6 {
 .dogcard-wrapper {
   max-width: 1207px;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .dogcard {
   display: flex;
   flex-direction: column;
   width: fit-content;
+  position: relative;
 }
 
+.dogcard img {
+  width: 100%;
+}
+.dogcard button {
+  background: none;
+  border: none;
+  font-size: 85px;
+  width: fit-content;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  color: #fff;
+}
+
+.dogcard button.liked {
+  color: red; /* Change color to red when liked */
+}
+
+.top-wrapper {
+  display: flex;
+  max-width: 1026px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  gap: 26px;
+}
+
+.top-wrapper h2 {
+  margin: 0;
+}

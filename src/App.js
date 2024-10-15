@@ -45,8 +45,10 @@ function App() {
         </>
       ) : (
         <>
-          <h2>Welcome, {user.email}</h2>
-          <Logout />
+          <div className='top-wrapper'>
+            <h2>Welcome, {user.email}</h2>
+            <Logout />
+          </div>
           <DogBreeds onSelectBreed={handleSelectBreed} />
           {selectedBreeds.length > 0 && <DogFeed selectedBreeds={selectedBreeds} user={user} />}
         </>

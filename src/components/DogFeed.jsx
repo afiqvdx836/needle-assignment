@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const DogFeed = ({ selectedBreeds, user }) => {
   const [dogImages, setDogImages] = useState([]);
+  const [likedImages, setLikedImages] = useState([]);
 
   useEffect(() => {
     const fetchDogImages = async () => {
@@ -30,8 +31,9 @@ const DogFeed = ({ selectedBreeds, user }) => {
       await updateDoc(userDocRef, {
         likedImages: arrayUnion(image),
       });
+      setLikedImages((prev) => [...prev, image]);
       toast.success('You liked this image!', { position: 'top-right', autoClose: 2000 });
-      console.log('You liked this image!');
+      console.log(`You liked this image!`);
     } else {
       alert('You must be logged in to like images.');
     }
@@ -49,7 +51,12 @@ const DogFeed = ({ selectedBreeds, user }) => {
           <SwiperSlide key={index}>
             <div className='dogcard'>
               <img src={image} alt={`Random dog of ${selectedBreeds[index]}`} width="300px" />
-              <button onClick={() => handleLike(image)}>Like</button>
+              <button
+                onClick={() => handleLike(image)}
+                className={likedImages.includes(image) ? 'liked' : ''}
+              >
+                ❤
+              </button>
             </div>
           </SwiperSlide>
         ))}
